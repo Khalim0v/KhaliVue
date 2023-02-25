@@ -1,0 +1,1 @@
+export const logo = 'https://st4.depositphotos.com/5040187/19724/v/600/depositphotos_197247096-stock-illustration-logo-swoosh-global-red-letter.jpg'
