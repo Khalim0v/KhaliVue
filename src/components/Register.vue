@@ -29,7 +29,7 @@ export default {
   methods: {
     submitHandler(e) {
       e.preventDefault() //page refresh bolib ketmasligi uchun event ga preventDefault qiymat beriladi
-      this.$store.commit('setLoading')
+      this.$store.dispatch('register')
     }
   }
 }
