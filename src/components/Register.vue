@@ -29,7 +29,12 @@ export default {
   methods: {
     submitHandler(e) {
       e.preventDefault() //page refresh bolib ketmasligi uchun event ga preventDefault qiymat beriladi
-      this.$store.dispatch('register')
+      const data = {
+        username: "khali",
+        email: "khali2@gmail.com",
+        password: "qwertyu"
+      }
+      this.$store.dispatch('register', data) //payload - dispatch qilyotgandagi ikkinchi parametr nomi
     }
   }
 }

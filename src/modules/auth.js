@@ -1,3 +1,5 @@
+import AuthService from "../service/auth"
+
 const state = {
   isLoading: false,
 }
@@ -9,10 +11,8 @@ const mutations = { //mutatsalar bilan ishlayotganda mutatsalarni commit qilinad
 }
 
 const actions = { //action lar bilan ishlayotganda action lar dispatch qilinadi
-  register(context) {
-    setTimeout(() => {
-      context.commit('setLoading')
-    }, 2000)
+  register(context, user) {
+    AuthService.register(user)
   }
 }
 
