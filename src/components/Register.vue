@@ -34,7 +34,7 @@ export default {
         email: "khali2@gmail.com",
         password: "qwertyu"
       }
-      this.$store.dispatch('register', data) //payload - dispatch qilyotgandagi ikkinchi parametr nomi
+      this.$store.dispatch('register', data).then(user => console.log("USER", user)).catch(err => console.log("ERROR", err)) //payload - dispatch qilyotgandagi ikkinchi parametr nomi
     }
   }
 }
