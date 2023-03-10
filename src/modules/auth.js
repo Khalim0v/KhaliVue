@@ -1,3 +1,4 @@
+import { setItem } from "../helpers/persisteneStorage"
 import AuthService from "../service/auth"
 
 const state = {
@@ -29,6 +30,7 @@ const actions = { //action lar bilan ishlayotganda action lar dispatch qilinadi
       AuthService.register(user)
         .then(response => {
           context.commit('registerSuccess', response.data.user)
+          setItem('token', response.data.user.token)//localStorage ga token kiritish
           resolve(response.data.user)
         })
         .catch(error => {
