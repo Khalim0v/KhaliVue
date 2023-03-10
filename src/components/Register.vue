@@ -4,11 +4,11 @@
       <img :src="logo" alt="logo" style="width: 100px; cursor: pointer;" @click="toHomeHandler" />
       <h1 class="h3 mb-3 fw-normal mt-2">Register</h1>
 
-      <Input :label="'Email address'" :type="'email'" />
-      <Input :label="'Password'" :type="'password'" />
-      <Input :label="'Name'" :type="'text'" />
+      <Input :label="'Name'" :type="'text'" v-model="username" />
+      <Input :label="'Email address'" :type="'email'" v-model="email" />
+      <Input :label="'Password'" :type="'password'" v-model="password" />
 
-      <Button type="submit" :disabled="isLoading" @click="submitHandler">Sign in</Button>
+      <Button type="submit" :disabled="isLoading" @click="submitHandler">Register</Button>
     </form>
   </main>
 </template>
@@ -18,7 +18,10 @@ import { logo } from '../constants'
 export default {
   data() {
     return {
-      logo
+      logo,
+      username: '',
+      email: '',
+      password: '',
     }
   },
   computed: {
@@ -30,11 +33,16 @@ export default {
     submitHandler(e) {
       e.preventDefault() //page refresh bolib ketmasligi uchun event ga preventDefault qiymat beriladi
       const data = {
-        username: "khali",
-        email: "khali2@gmail.com",
-        password: "qwertyu"
+        username: this.username,
+        email: this.email,
+        password: this.password,
       }
-      this.$store.dispatch('register', data).then(user => console.log("USER", user)).catch(err => console.log("ERROR", err)) //payload - dispatch qilyotgandagi ikkinchi parametr nomi
+      this.$store.dispatch('register', data)
+        .then(user => {
+          console.log("USER", user)
+          this.$router.push({ name: 'home' })
+        })
+        .catch(err => console.log("ERROR", err)) //payload - dispatch qilyotgandagi ikkinchi parametr nomi
     }
   }
 }

@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     toHomeHandler() {
-      return this.$router.push('/') // logoni bosganda Home page ga otish metodi
+      return this.$router.push({ name: 'home' }) // logoni bosganda Home page ga otish metodi
     }
   }
 }
