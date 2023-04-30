@@ -1,11 +1,24 @@
 import { setItem } from "../helpers/persisteneStorage"
 import AuthService from "../service/auth"
+import { gettersTypes } from "./types"
 
 const state = {
   isLoading: false,
   user: null,
   errors: null,
   isLoggedIn: null,
+}
+
+const getters = {
+  [gettersTypes.currentUser]: state => { //JS qoidasi buyicha [gettersTypes.currentUser] kabi yoziladi
+    return state.user
+  },
+  [gettersTypes.isLoggedIn]: state => {
+    return Boolean(state.isLoggedIn)
+  },
+  [gettersTypes.isAnonymous]: state => {
+    return state.isLoggedIn === false
+  },
 }
 
 const mutations = { //mutatsalar bilan ishlayotganda mutatsalarni commit qilinadi
@@ -79,5 +92,6 @@ const actions = { //action lar bilan ishlayotganda action lar dispatch qilinadi
 export default {
   state,
   mutations,
-  actions
+  actions,
+  getters
 }
